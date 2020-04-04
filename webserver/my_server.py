@@ -9,12 +9,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 
 
 DATABASEURI = "postgresql://jl5521:6447@35.231.103.173/proj1part2"
-
-engine.execute("""CREATE TABLE IF NOT EXISTS test (
-  id serial,
-  name text
-);""")
-engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+engine = create_engine(DATABASEURI)
 
 
 @app.before_request
@@ -34,7 +29,8 @@ def teardown_request(exception):
     pass
 
 @app.route('/')
-	return render_template("home.html")
+def index():
+  return render_template("home.html")
 
 @app.route('/player',methods = ['GET', 'POST'])
 def search_player():
@@ -66,7 +62,7 @@ def show_player_result(playername):
 		salary=record['salary'],points_per_game=record['points_per_game'])
 	cursor.close()
 
-  return render_template("play_stat.html", **player_stat)
+	return render_template("play_stat.html", **player_stat)
 
 
 
