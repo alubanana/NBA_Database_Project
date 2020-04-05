@@ -87,7 +87,7 @@ def news(playername):
 def search_team():
 	if request.method == 'POST':
 		team_name = request.form.get('team')
-		sql = "select team_name from teams where team_name = '%%{team}%%'".format(team=team_name)
+		sql = "select team_name from teams where team_name ilike '%%{team}%%'".format(team=team_name)
 		cursor = g.conn.execute(sql)
 		names = []
 		for result in cursor:
