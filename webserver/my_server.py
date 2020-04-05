@@ -73,7 +73,7 @@ def player_schedule(playername):
 
 @app.route('/player/<playername>/news')
 def news(playername):
-	sql = """select news_title,news_context,news_date from players,news_to_players,news 
+	sql = """select news_title,new_context,news_date from players,news_to_players,news 
 			where players.player_name = '{name}' and players.player_id = news_to_players.player_id 
 			and news_to_players.news_id = news.news_id""".format(name=playername)
 	cursor = g.conn.execute(sql)
@@ -94,7 +94,7 @@ def search_team():
 			names.append(result[0])  
 		cursor.close()
 		team_search_names = dict(data = names)
-	return render_template("team_search_result.html", **team_search_names)
+		return render_template("team_search_result.html", **team_search_names)
 	
 	return '''<form method="POST">
                   team: <input type="text" name="team"><br>
