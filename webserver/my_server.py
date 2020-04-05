@@ -66,14 +66,72 @@ def show_player_result(playername):
 
 
 
+@app.route('/player/<playername>/schedule')
+def player_schedule(playername):
+	return 'Todo....'
+
+
+@app.route('/player/<playername>/news')
+def news(playername):
+	sql = """select news_title,news_context,news_date from players,news_to_players,news 
+			where players.player_name = '{name}' and players.player_id = news_to_players.player_id 
+			and news_to_players.news_id = news.news_id""".format(name=playername)
+	cursor = g.conn.execute(sql)
+	record = cursor.fetchall()
+	context = dict(player_name=playername,news_result=record)
+	cursor.close()
+	return render_template("player_news.html", **context)
+
+
 @app.route('/team',methods = ['GET', 'POST'])
 def search_team():
-	return 'Todo....'
+	if request.method == 'POST':
+		team_name = request.form.get('team')
+		sql = "select team_name from teams where player_name team_name '%%{team}%%'".format(team=team_name)
+		cursor = g.conn.execute(sql)
+		names = []
+		for result in cursor:
+			names.append(result[0])  
+		cursor.close()
+		team_search_names = dict(data = names)
+	return render_template("team_search_result.html", **team_search_names)
+	
+	return '''<form method="POST">
+                  team: <input type="text" name="team"><br>
+                  <input type="submit" value="Search"><br>
+                  <p><a href="/">Back to homepage</a> </p>
+                  </form>'''
+
 
 
 @app.route('/team/<teamname>')
 def team_info(teamname):
-  return 'Todo....'
+	sql = """select teams.team_name,found_year,city,state,stadium_name,coach_name from teams,coaches,stadium_to_team,coach_to_team 
+			where teams.team_name = '{name}' and coaches.coach_id = coach_to_team.coach_id and coach_to_team.team_name = teams.team_name 
+			and teams.team_name = stadium_to_team.team_name""".format(name=teamname)
+	cursor = g.conn.execute(sql)
+	record = cursor.fetchone()
+	team_stat = dict(team_name = record['team_name'],found_year=record['found_year'],city=record['city'],
+					state=record['state'],stadiums=record['stadium_name'],coach=record['coach_name'])
+	cursor.close()
+	return render_template("team_info.html", **team_stat)
+
+@app.route('/team/<teamname>/schedule')
+def schedule(teamname):
+	return 'Todo....'
+
+@app.route('/team/<teamname>/player_list')
+def player_list(teamname):
+	sql = """select player_name from players,teams,players_to_team where teams.team_name = '{name}' 
+			and players_to_team.player_id = players.player_id and players_to_team.team_name = teams.team_name""".format(name=teamname)
+	cursor = g.conn.execute(sql)
+	names = []
+	for result in cursor:
+		names.append(result[0])  
+	cursor.close()
+	playerlists = dict(data = names)
+	context = dict(team_name = teamname,player_list=playerlists)
+	return render_template("player_list.html", **context)
 
 
 

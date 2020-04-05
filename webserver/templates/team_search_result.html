@@ -1,0 +1,29 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Team Search Result</h1>
+  <div>
+    {% for n in data %}
+    <p><a href="team/{{n}}">{{n}}</a></p>
+    {% endfor %}
+  </div>
+
+
+<p>
+  <br>
+  <br>
+<p><a href="/">Back to homepage</a> </p>
+<p><a href="/team">Back to team search</a> </p>
+</p>
+
+</body>
+
+
+</html>

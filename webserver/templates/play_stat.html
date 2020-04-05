@@ -3,7 +3,7 @@
     <title>Player Stat</title> 
   </head>
 <body>
-
+  <h1>Stat of {{player_name}}</h1>
 <table border="1">
 <tr>
   <th>Player ID:</th>
@@ -65,8 +65,15 @@
   <th>points per game</th>
   <td>{{points_per_game}}</td>
 </tr>
+<tr>
+  <th>News</th>
+  <td><p><a href="{{player_name}}/news">view</a></p></td>
+</tr>
+<tr>
+  <th>Schedule</th>
+  <td><p><a href="{{player_name}}/schedule">view</a></p></td>
+</tr>
 </table>
-
 
 <p>
   <br>
@@ -74,3 +81,8 @@
 <p><a href="/">Back to homepage</a> </p>
 <p><a href="/player">Back to player search</a> </p>
 </p>
+
+</body>
+
+
+</html>
