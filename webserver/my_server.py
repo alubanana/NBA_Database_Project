@@ -93,7 +93,7 @@ def search_team():
 		for result in cursor:
 			names.append(result[0])  
 		cursor.close()
-		team_search_names = dict(player_list = names)
+		team_search_names = dict(team_name = team_name,player_list = names)
 		return render_template("team_search_result.html", **team_search_names)
 	
 	return '''<form method="POST">
