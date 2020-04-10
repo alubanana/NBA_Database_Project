@@ -74,7 +74,7 @@ def player_schedule(playername):
 			SUM(CASE WHEN shot_result=TRUE THEN 1 ELSE 0 END) as MADE, 
 			SUM(CASE WHEN shot_result=FALSE THEN 1 ELSE 0 END) as MISSED, 
 			(case when COUNT(SHOT_RESULT) > 0 then (100*SUM(CASE WHEN shot_result=TRUE THEN 1 ELSE 0 END)/COUNT(SHOT_RESULT))::text else 'NA' end) AS SHOT_percentage, 
-			(case when COUNT(SHOT_RESULT) > 0 then ROUND(avg(time_clock),2)::text else 'NA' end) as avarage_time clock, 
+			(case when COUNT(SHOT_RESULT) > 0 then ROUND(avg(time_clock),2)::text else 'NA' end) as avarage_clock, 
 			(case when COUNT(SHOT_RESULT) > 0 then round(AVG(shot_distance),2)::text else 'NA' end) AS average_distance 
 			from Shots natural join Shot_to_player Natural join shot_to_game 
 			natural join game_to_team natural join games Left join players p on 
