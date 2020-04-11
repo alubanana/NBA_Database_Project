@@ -20,7 +20,7 @@ Search for Player will provide all players that match your searched string. For 
 
 Search for teams will gives back specific team information about the team you want to search for. For example, if you type in “New York”, the database will return “New York Knicks”, and you can further click on the team name to have more information about it. The team’s information contains found year, city of the team, state, stadium of the team, the main coach, player list and all match schedule during the given period. The “players lists” will give back all the players in this team. Similar to the “search for players” function, you can click on any player name in this team to view the same information like you directly search for him. Also, “schedule” function will provide all the match this team play against other team, and from here you can view other team’s information as well. 
 
-For 
+
 
 
 
