@@ -135,8 +135,23 @@ def team_info(teamname):
 	return render_template("team_info.html", **team_stat)
 
 @app.route('/team/<teamname>/schedule')
-def schedule(teamname):
-	return 'Todo....'
+def team_schedule(teamname):
+	sql = """Select game_date,home_team_name,away_team_name,stadium_name,
+			(case when winner='home' then home_team_name else away_team_name end) as winner
+			from teams, game_to_team, games 
+			Where team_name = '{name}' and teams.team_name = game_to_team.home_team_name
+			and game_to_team.game_id = games.game_id
+			union
+			Select game_date,home_team_name,away_team_name,stadium_name,
+			(case when winner='home' then home_team_name else away_team_name end) as winner
+			from teams, game_to_team, games 
+			Where team_name = '{name}' and teams.team_name = game_to_team.away_team_name
+			and game_to_team.game_id = games.game_id""".format(name=teamname)
+	cursor = g.conn.execute(sql)
+	record = cursor.fetchall()
+	context = dict(team_name=teamname,schedule=record)
+	cursor.close()
+	return render_template("team_schedule.html", **context)
 
 @app.route('/team/<teamname>/player_list')
 def player_list(teamname):
