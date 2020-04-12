@@ -9,8 +9,8 @@ Instructor: Kenneth Ross
 Group 36
 
 Member: 
-ac4619 Annan Chen
-jl5521 Jiepeng Lian
+<li>ac4619 Annan Chen
+<li>jl5521 Jiepeng Lian
 
 
 
