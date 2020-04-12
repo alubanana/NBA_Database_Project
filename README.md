@@ -1,5 +1,18 @@
 # dbproject
-coms 4111 Intro to database project
+
+COMSW 4111 001: Introduction to Databases
+
+Project: NBA Database
+
+Instructor: Kenneth Ross
+
+Group 36
+
+Member: 
+ac4619 Annan Chen
+jl5521 Jiepeng Lian
+
+
 
 This is a project of relational database that gives us a scope of how NBA league and its members behave and how do they connect to each other. With this database, you can find out each team and player’s actions and basic stats during the season(stadium, players, coaches, etc), each player’s shot informatrion during one specific game(time clock, shot distance, etc.)
 
