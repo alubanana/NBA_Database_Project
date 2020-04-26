@@ -23,7 +23,7 @@ indicating players' tendency to shot in every quarter.
 select team_name, found_year from teams where plainto_tsquery('NBA finals')||plainto_tsquery('champion') @@ to_tsvector(description);
 
 And the output will be:
-
+"""
        team_name        | found_year 
 ------------------------+------------
  New York Knicks        |       1946
@@ -41,7 +41,7 @@ And the output will be:
  Phoenix Suns           |       1968
  Houston Rockets        |       1967
  (It doesn't means the rest teams never enter finals)
-
+"""
 
 -- Find the top 10 players that has the highest shot attempts within a quarter
 
