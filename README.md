@@ -19,6 +19,7 @@ This is a project of relational database that gives us a scope of how NBA league
 Inside the Virtual Machine command line, type the following commands with account name and password to activate the database. 
 ```console
 source ../jl5521/.virtualenvs/dbproj/bin/activate
+PGPASSWORD=6447 psql -U jl5521 -h 35.231.103.173 -d proj1part2
 ```
 
 PostgreSQL account name: jl5521
