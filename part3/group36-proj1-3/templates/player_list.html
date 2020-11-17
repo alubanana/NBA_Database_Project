@@ -1,0 +1,26 @@
+<html>
+  <head> 
+    <title>Player Lists of {{team_name}}</title> 
+  </head>
+<body>
+  <h1>Player Lists of {{team_name}}</h1>
+<table border="1">
+
+  {% for n in player_list %}    
+  <tr><th><a href="/player/{{n}}">{{n}}</a></th></tr>
+  {% endfor %}
+
+</table>
+
+
+<p>
+  <br>
+  <br>
+<p><a href="/">Back to homepage</a> </p>
+<p><a href="/team">Back to team search</a> </p>
+</p>
+
+</body>
+
+
+</html>
